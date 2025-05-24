@@ -1,0 +1,5 @@
+{
+  "CommandLine": "whoami /all",
+  "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+  "Image": "C:\\Windows\\System32\\whoami.exe"
+}
