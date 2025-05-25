@@ -1,5 +1,8 @@
 {
-  "CommandLine": "whoami /all",
-  "ParentImage": "C:\\Windows\\System32\\cmd.exe",
-  "Image": "C:\\Windows\\System32\\whoami.exe"
+  "Image": "C:\\Windows\\System32\\cmd.exe",
+  "ParentImage": "C:\\Windows\\System32\\SearchIndexer.exe",
+  "CommandLine": "cmd.exe /c whoami",
+  "ProcessId": 1234,
+  "ParentProcessId": 5678,
+  "UtcTime": "2025-05-25T12:00:00.000Z"
 }
