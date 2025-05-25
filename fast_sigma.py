@@ -11,15 +11,19 @@ DEFAULT_FLD = "commandline"
 
 
 OPS = {
-    "contains":   lambda v, ls: any(x in v for x in ls),
-    "endswith":   lambda v, ls: any(v.endswith(x) for x in ls),
-    "equals":     lambda v, ls: v in ls,
-    "startswith": lambda v, ls: any(v.startswith(x) for x in ls),
-    "re":         lambda v, ls: any(re.search(x, v, re.I) for x in ls),
-    "cidr":       lambda v, ls: any(ipaddress.ip_address(v) in ipaddress.ip_network(n, strict=False)
-                                    for n in ls if _is_ip(v)),
+    "contains":     lambda v, ls: any(x in v for x in ls),
+    "endswith":     lambda v, ls: any(v.endswith(x) for x in ls),
+    "equals":       lambda v, ls: v in ls,
+    "startswith":   lambda v, ls: any(v.startswith(x) for x in ls),
+    "re":           lambda v, ls: any(re.search(x, v, re.I) for x in ls),
+    "cidr":         lambda v, ls: any(ipaddress.ip_address(v) in ipaddress.ip_network(n, strict=False)
+                                      for n in ls if _is_ip(v)),
     "base64offset": lambda v, ls, off=5: any(x in _b64dec(v, off) for x in ls),
+    "all":          lambda v, ls: all(x in v for x in ls),
+    "exists":       lambda v, ls: (v is not None and v != "") if ls == [True] else (v is None or v == ""),
+    "windash":      lambda v, ls: any(("\\" in v or "-" in v) == bool(flag) for flag in ls),
 }
+
 
 def _is_ip(s):
     try: ipaddress.ip_address(s); return True
